@@ -1,9 +1,6 @@
-module.exports = function(module, options){
+module.exports = function(newModule, options){
   try{
-//    if(module[0] in {".":1}){
-//      module = process.cwd() + module.substr(1);
-//    }
-    return require(module);
+    return module.parent.require(newModule);
   }catch(err){ 
     if (err.code !== "MODULE_NOT_FOUND" && options && options.rethrow) {
       throw err;
